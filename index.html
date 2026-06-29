@@ -113,7 +113,9 @@ em{font-style:italic}
 .day-bar{position:sticky;top:0;z-index:50;background:rgba(251,241,226,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:11px 14px;padding-top:max(11px,env(safe-area-inset-top));display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line)}
 .back-btn{font-size:21px;color:var(--coral);cursor:pointer;border:none;background:none;padding:2px 6px 2px 2px;line-height:1;font-weight:600}
 .day-bar .dt{font-family:var(--disp);font-weight:600;font-size:15px;flex:1}
-.day-body{padding:18px 16px 120px}
+.day-body{padding:18px 16px 6px}
+#dayScreen{display:flex;flex-direction:column;overflow:hidden}
+#dayScroll{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .day-hd-title{font-family:var(--disp);font-weight:600;font-size:24px;line-height:1.12;text-wrap:balance}
 .day-core{font-size:13px;color:var(--ink-soft);margin-top:10px;background:linear-gradient(135deg,#fff9f0,#fdf2e3);border:1px solid var(--line);border-radius:12px;padding:11px 13px;line-height:1.5}
 .sec-label{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px}
@@ -144,7 +146,7 @@ em{font-style:italic}
 .stay-card .si{flex:1;min-width:0}.stay-card .sn{font-size:13.5px;font-weight:600}.stay-card .sm{font-size:11px;color:var(--ink-soft);margin-top:1px}
 .stay-card .chg{font-size:11px;font-weight:600;color:var(--indigo);flex:0 0 auto}
 .choose-stay{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--indigo);background:#f3f4ff;border:1.5px dashed #c3c9ff;border-radius:13px;padding:13px;cursor:pointer}
-.day-foot{position:fixed;bottom:0;left:0;right:0;padding:11px 14px;padding-bottom:max(11px,env(safe-area-inset-bottom));background:rgba(251,241,226,.93);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);display:flex;gap:9px;z-index:50}
+.day-foot{flex:0 0 auto;padding:11px 14px;padding-bottom:max(11px,env(safe-area-inset-bottom));background:rgba(251,241,226,.97);border-top:1px solid var(--line);display:flex;gap:9px;z-index:50}
 .add-btn{flex:1;font-size:15px;font-weight:600;background:var(--coral);color:#fff;border:none;padding:14px;border-radius:13px;cursor:pointer;box-shadow:0 8px 20px -8px rgba(255,107,90,.6)}
 .add-btn:active{background:var(--coral-d)}
 .mapbtn{font-size:15px;font-weight:600;background:var(--ink);color:#fff;border:none;padding:14px 17px;border-radius:13px;cursor:pointer}
@@ -239,7 +241,7 @@ em{font-style:italic}
 
 /* Leaflet popups */
 .leaflet-popup-content-wrapper{border-radius:14px;box-shadow:0 12px 34px -10px rgba(28,19,48,.5)}
-.leaflet-popup-content{font-family:var(--body);margin:12px 14px;width:auto!important}
+.leaflet-popup-content{font-family:var(--body);margin:12px 14px;min-width:186px}
 .pop h4{font-family:var(--disp);font-weight:600;font-size:15.5px;margin:0 0 2px}
 .pop .pm{font-size:11px;color:#a08f7f;font-weight:600}
 .pop p{font-size:12px;color:var(--ink-soft);margin:6px 0 0;line-height:1.4}
@@ -268,6 +270,27 @@ em{font-style:italic}
 .toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--ink);color:#fff;font-size:13px;font-weight:600;padding:11px 18px;border-radius:999px;z-index:400;opacity:0;pointer-events:none;transition:opacity .24s,transform .24s;white-space:nowrap;box-shadow:0 10px 30px -8px rgba(28,19,48,.6)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast .tk{color:var(--gold)}
+/* explore section on home */
+.explore{margin-top:2px}
+.exp-tabs{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;margin-bottom:10px}
+.exp-tabs::-webkit-scrollbar{display:none}
+.exp-tab{flex:0 0 auto;font-size:12.5px;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--ink-soft);padding:8px 13px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.exp-tab.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.exp-filters{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-bottom:10px}
+.exp-filters::-webkit-scrollbar{display:none}
+.exp-card .chev{color:var(--ink-faint);font-size:18px;align-self:center;flex:0 0 auto;padding-right:2px}
+/* day inline map panel */
+.day-map-panel{margin:14px 16px 20px;position:relative}
+.dmap-cap{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:9px;display:flex;align-items:center;justify-content:space-between}
+.dmap-cap .hint{color:var(--ink-faint);font-weight:500;text-transform:none;letter-spacing:0;font-size:11px}
+#dmap{height:300px;border-radius:16px;background:#dfe6ea;box-shadow:0 12px 32px -18px rgba(28,19,48,.55);z-index:1}
+.map-expand{position:absolute;right:10px;bottom:10px;z-index:500;font-family:var(--body);font-size:12px;font-weight:700;background:rgba(28,19,48,.92);color:#fff;border:none;padding:8px 13px;border-radius:999px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+/* detail day-chip picker */
+.dt-pick .lbl{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:9px}
+.dt-days{display:flex;gap:7px;flex-wrap:wrap}
+.dt-day{font-size:13px;font-weight:600;border:1.5px solid var(--line);background:#fff;color:var(--ink-soft);padding:9px 14px;border-radius:11px;cursor:pointer}
+.dt-day.on{background:var(--coral);border-color:var(--coral);color:#fff}
+.dt-day.stayon{background:var(--indigo);border-color:var(--indigo);color:#fff}
 @media(prefers-reduced-motion:reduce){.balloon{animation:none!important}}
 </style>
 </head>
@@ -416,13 +439,16 @@ const AF_STAY=['af10','af11','af12','af13'];
 const AF_ACT=AF_IDS.filter(id=>!AF_STAY.includes(id));
 const AF_ACT_CATS=['All','Eat','Sweets','Do'];
 const REGION_ACT={afyon:AF_ACT,road:RD_IDS,capp:CP_IDS,home:HM_IDS};
+const REGION_DAYS={afyon:['d1','d2'],road:['d2'],capp:['d3','d4','d5'],home:['d6','d7']};
 const REGION_CENTER={afyon:[38.78,30.50],road:[38.6,32.6],capp:[38.645,34.835],home:[40.30,31.30]};
 const STAY_SET=new Set([...HO_IDS,...AF_STAY,...HOME_TOWNS.map(t=>t.id)]);
+const EXPLORE_TABS=[['capp','🎈 Cappadocia'],['afyon','♨️ Afyon'],['road','🚗 On the road'],['home','🏡 Way home']];
 
 /* ===================== STATE ===================== */
 let state={flex:'home',itin:{},sleep:{}};
 let activeDay='d3',sheetMode='act',sheetTab='browse',sheetFilter='All',selEmoji='📍',customN=0;
-let mapView='trip',detailId=null,detailStay=false,map=null,markersLayer=null,lineLayer=null,mapReady=false;
+let mapView='trip',detailId=null,detailStay=false,exploreRegion='capp',exploreFilter='All';
+const CTX={};   /* {overlay:{map,markers,lines}, inline:{...}} — two Leaflet instances */
 const LS='turkiye_plan_v1';
 
 /* ===================== HELPERS ===================== */
@@ -445,6 +471,13 @@ function badgeFor(d){return d.kind==='lock'?'<span class="badge bg-lock">✓ All
 function staysFor(d){if(d.sleep==='afyon')return AF_HOTELS.map(o=>o.id);if(d.sleep==='capp')return HOTELS.map(o=>o.id);if(d.sleep==='choice')return (state.flex==='home'?HOME_TOWNS:HOTELS).map(o=>o.id);return []}
 function coverStyle(p){return p.photo?`background-image:url('${p.photo}')`:`background:${grad(p.cat)}`}
 function mapOpen(){return document.getElementById('mapOv').classList.contains('open')}
+function dayActive(){return document.getElementById('dayScreen').classList.contains('active')}
+function sheetOpen(){return document.getElementById('sheet').classList.contains('open')}
+function detailOpen(){return document.getElementById('detailOv').classList.contains('open')}
+function regionOf(id){const v=(P[id]&&P[id].views)||[];if(v.includes('capp')||/^cp|^ho/.test(id))return 'capp';if(v.includes('afyon')||/^af/.test(id))return 'afyon';if(v.includes('road'))return 'road';if(v.includes('home'))return 'home';return 'capp'}
+function applicableDays(id){let ds=(REGION_DAYS[regionOf(id)]||['d3','d4','d5']).slice();if(state.flex==='cappadocia'&&regionOf(id)==='capp'&&!ds.includes('d6'))ds.push('d6');return ds}
+function stayNights(id){const r=regionOf(id);if(r==='afyon')return ['d1'];if(r==='home')return state.flex==='home'?['d6']:[];let n=['d2','d3','d4','d5'];if(state.flex==='cappadocia')n.push('d6');return n}
+function byRating(ids){return ids.slice().sort((a,b)=>((P[b]&&P[b].r)||4.3)-((P[a]&&P[a].r)||4.3))}
 
 /* ===================== WEEK ===================== */
 function renderWeek(){
@@ -484,19 +517,37 @@ function renderWeek(){
           <button class="pbtn gh" onclick="event.stopPropagation();clearAll()">Start fresh</button></div></div>
       <div class="section-eyebrow"><span class="k">Our seven days</span><span class="ln"></span></div>
       ${cards}
-      <div class="tease-row">
+      <div class="section-eyebrow" style="margin-top:24px"><span class="k">Explore ideas</span><span class="ln"></span></div>
+      <p style="font-size:12.5px;color:var(--ink-soft);margin:-4px 2px 12px;line-height:1.45">Have a browse — tap anything to read more, see it on the map, and add it to a day.</p>
+      <div class="explore" id="explore"></div>
+      <div class="tease-row" style="margin-top:22px">
         <div class="tease map" onclick="openMap('trip')"><span class="deco">🗺</span><span class="ic">🗺</span><div class="lb">See it on a map</div><div class="ht">Our whole journey, pins and all</div></div>
         <div class="tease share" onclick="openShare()"><span class="ic">🔗</span><div class="lb">Share our plan</div><div class="ht">Send a link — they see everything</div></div></div>
     </div>`;
+  renderExplore();
 }
+function renderExplore(){
+  const box=document.getElementById('explore');if(!box)return;
+  const tabs=`<div class="exp-tabs">${EXPLORE_TABS.map(t=>`<button class="exp-tab ${t[0]===exploreRegion?'on':''}" onclick="setExploreRegion('${t[0]}')">${t[1]}</button>`).join('')}</div>`;
+  let ids=(REGION_ACT[exploreRegion]||CP_IDS).slice(),filters='';
+  if(exploreRegion==='capp'){filters=`<div class="exp-filters">${CP_CATS.filter(c=>c!=='Stay').map(c=>`<button class="fchip ${c===exploreFilter?'on':''}" onclick="setExploreFilter('${c}')">${c}</button>`).join('')}</div>`;
+    if(exploreFilter!=='All'&&CP_CATMAP[exploreFilter])ids=ids.filter(id=>P[id].cat===CP_CATMAP[exploreFilter])}
+  else if(exploreRegion==='afyon'){filters=`<div class="exp-filters">${AF_ACT_CATS.map(c=>`<button class="fchip ${c===exploreFilter?'on':''}" onclick="setExploreFilter('${c}')">${c}</button>`).join('')}</div>`;
+    if(exploreFilter!=='All'&&AF_CATMAP[exploreFilter])ids=ids.filter(id=>P[id].cat===AF_CATMAP[exploreFilter])}
+  ids=byRating(ids);
+  const cards=ids.map(id=>{const p=P[id];return `<div class="icard exp-card" onclick="openDetail('${id}',false)"><div class="ic-cover" style="${coverStyle(p)}">${p.photo?'':p.em}</div><div class="ic-inf"><div class="ic-name">${p.name}</div><div class="ic-det">${p.r?`<span class="ic-rat">${p.r} ★</span>`:''}<span class="ic-pill">${p.pill||''}</span></div><div class="ic-bl">${p.bl||''}</div></div><span class="chev">›</span></div>`}).join('');
+  box.innerHTML=tabs+filters+(cards||'<div style="text-align:center;color:var(--ink-faint);padding:24px;font-size:13px">Nothing in this group.</div>');
+}
+function setExploreRegion(r){exploreRegion=r;exploreFilter='All';renderExplore()}
+function setExploreFilter(f){exploreFilter=f;renderExplore()}
 function balloonsHTML(){
   const B=[{t:6,l:9,w:56,c:['#ff8f6e','#ff5a7a'],d:0,du:11},{t:15,l:63,w:46,c:['#ffd27a','#f6a83f'],d:1.4,du:12.5},{t:5,l:40,w:30,c:['#7fe3d6','#27b8a6'],d:2.8,du:10},{t:27,l:28,w:24,c:['#f3c9bf','#e0897a'],d:1,du:13},{t:23,l:82,w:34,c:['#ffe0a0','#ffb357'],d:3.4,du:11.5},{t:38,l:7,w:19,c:['#c4a9ec','#8a6ad0'],d:.6,du:9.5},{t:12,l:88,w:17,c:['#ffb0a0','#ff7a6a'],d:2.2,du:12}];
   return B.map((b,i)=>`<svg class="balloon" style="top:${b.t}%;left:${b.l}%;width:${b.w}px;animation-delay:${b.d}s;animation-duration:${b.du}s" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bg${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${b.c[0]}"/><stop offset="1" stop-color="${b.c[1]}"/></linearGradient></defs><path d="M30 2C13 2 4 15 4 30c0 16 14 26 22 33h8c8-7 22-17 22-33C56 15 47 2 30 2Z" fill="url(#bg${i})"/><path d="M30 2v61M15 7c1 22 6 41 11 54M45 7c-1 22-6 41-11 54" stroke="rgba(255,255,255,.35)" stroke-width="1" fill="none"/><path d="M23 60h14l-2.5 9H25.5z" fill="#2a1a3a"/></svg>`).join('');
 }
 
 /* ===================== DAY DETAIL ===================== */
-function renderDay(){
-  const d=dObj(activeDay),it=state.itin[d.id],sl=state.sleep[d.id];
+function renderDayContentHTML(d){
+  const it=state.itin[d.id],sl=state.sleep[d.id];
   let body=`<div class="day-hd-title">${dayTitle(d)}</div>`;
   if(d.core)body+=`<div class="day-core">${d.core}</div>`;
   if(d.id==='d6'){const stay=state.flex==='cappadocia';
@@ -508,7 +559,7 @@ function renderDay(){
     const km=dayKm(d.id);
     body+=`<div class="items-sec"><div class="sec-label">Your plan · ${it.length} stop${it.length>1?'s':''}</div>${rows}${km?`<div class="dist-line">📍 ≈ ${km} km in this order</div>`:''}<button class="clear-day" onclick="clearDay()">clear this day</button></div>`;
   }else if(d.kind!=='lock'){
-    body+=`<div class="empty-invite"><div class="big">✨</div><p>A blank, beautiful day. Tap <b>＋ Add something</b> to start building it — or go back and try a ready-made plan.</p></div>`;
+    body+=`<div class="empty-invite"><div class="big">✨</div><p>A blank, beautiful day. Tap <b>＋ Add something</b> below, browse <b>Explore</b> on the home screen, or try a ready-made plan.</p></div>`;
   }
   if(d.sleep!=='none'){
     let inner;
@@ -516,11 +567,19 @@ function renderDay(){
     else inner=`<button class="choose-stay" onclick="openSheet('stay')">🛏 Choose where we sleep</button>`;
     body+=`<div class="sleep-sec"><div class="sec-label">Where we sleep that night</div>${inner}</div>`;
   }
-  document.getElementById('dayScreen').innerHTML=`
-    <div class="day-bar"><button class="back-btn" onclick="showWeek()">‹</button><span class="dt">${d.date}</span>${badgeFor(d)}</div>
-    <div class="day-body">${body}</div>
-    <div class="day-foot"><button class="add-btn" onclick="openSheet('act')">＋ Add something</button><button class="mapbtn" onclick="openMap('day')">🗺</button></div>`;
-  document.getElementById('dayScreen').scrollTop=0;
+  return `<div class="day-bar"><button class="back-btn" onclick="showWeek()">‹</button><span class="dt">${d.date}</span>${badgeFor(d)}</div><div class="day-body">${body}</div>`;
+}
+function renderDay(){
+  const d=dObj(activeDay),scr=document.getElementById('dayScreen');
+  if(!document.getElementById('dayContent')){
+    scr.innerHTML=`<div id="dayScroll"><div id="dayContent"></div>
+      <div class="day-map-panel"><div class="dmap-cap"><span>📍 This day on the map</span><span class="hint">tap a pin for details</span></div><div id="dmap"></div><button class="map-expand" onclick="openMap('day')">⤢ Bigger map</button></div></div>
+      <div class="day-foot"><button class="add-btn" onclick="openSheet('act')">＋ Add something</button><button class="mapbtn" onclick="openMap('day')">🗺</button></div>`;
+  }
+  document.getElementById('dayContent').innerHTML=renderDayContentHTML(d);
+  document.getElementById('dayScroll').scrollTop=0;
+  const ctx=ensureCtx('inline','dmap',true);
+  setTimeout(()=>{ctx.map.invalidateSize(false);paint(ctx,'day')},120);
 }
 
 /* ===================== SHEET ===================== */
@@ -568,32 +627,40 @@ function renderSheet(){
 function openDetail(id,asStay){detailId=id;detailStay=asStay;renderDetail();document.getElementById('detailOv').classList.add('open')}
 function closeDetail(){document.getElementById('detailOv').classList.remove('open')}
 function renderDetail(){
-  const p=P[detailId];if(!p)return;const d=dObj(activeDay);
-  const added=detailStay?state.sleep[activeDay]===detailId:state.itin[activeDay].includes(detailId);
-  let primary,secondary='';
-  if(detailStay){primary=added?`<button class="dt-primary done">✓ We're staying here on ${dShort(d)}</button>`:`<button class="dt-primary stay" onclick="setStay('${detailId}');closeDetail()">🛏 Stay here on ${dShort(d)}</button>`;if(added)secondary=`<button class="dt-secondary" onclick="openSheet('stay');closeDetail()">Choose somewhere else</button>`}
-  else{primary=added?`<button class="dt-primary done">✓ Added to ${dShort(d)}</button>`:`<button class="dt-primary" onclick="addItem('${detailId}');renderDetail()">＋ Add to ${dShort(d)}</button>`;if(added)secondary=`<button class="dt-secondary" onclick="removeById('${detailId}');renderDetail()">Remove from ${dShort(d)}</button>`}
+  const p=P[detailId];if(!p)return;
+  const stayMode=detailStay||isStayPlace(detailId);
+  let pick;
+  if(stayMode){const nights=stayNights(detailId);
+    pick=nights.length?`<div class="dt-pick"><div class="lbl">🛏 Which night(s) do we stay here?</div><div class="dt-days">${nights.map(dy=>`<button class="dt-day ${state.sleep[dy]===detailId?'stayon':''}" onclick="toggleStayDay('${dy}','${detailId}')">${dShort(dObj(dy))}${state.sleep[dy]===detailId?' ✓':''}</button>`).join('')}</div></div>`:`<div class="dt-pick"><div class="lbl">Choose this from a night in your plan.</div></div>`;
+  }else{const days=applicableDays(detailId);
+    pick=`<div class="dt-pick"><div class="lbl">＋ Add to which day?</div><div class="dt-days">${days.map(dy=>`<button class="dt-day ${state.itin[dy].includes(detailId)?'on':''}" onclick="toggleItemDay('${dy}','${detailId}')">${dShort(dObj(dy))}${state.itin[dy].includes(detailId)?' ✓':''}</button>`).join('')}</div></div>`;
+  }
   document.getElementById('detailOv').innerHTML=`
     <button class="dt-back" onclick="closeDetail()">‹</button>${p.pill?`<span class="dt-pill">${p.pill}</span>`:''}
     <div class="dt-scroll">
       <div class="dt-cover ${p.photo?'hasphoto':''}" style="${coverStyle(p)}"><div class="glow"></div><span class="em">${p.em}</span></div>
       <div class="dt-body"><div class="dt-name">${p.name}</div>
-        <div class="dt-meta">${p.r?`<span class="dt-rat">${p.r} ★</span>`:''}<span class="dt-cat">${isStayPlace(detailId)?'place to stay':(p.cat==='custom'?'your find':(CATNAME[p.cat]||p.cat))}</span></div>
-        ${p.bl?`<div class="dt-bl">${p.bl}</div>`:'<div class="dt-bl" style="color:var(--ink-faint);font-style:italic">A place you added — tap below to drop it on the day.</div>'}
+        <div class="dt-meta">${p.r?`<span class="dt-rat">${p.r} ★</span>`:''}<span class="dt-cat">${stayMode?'place to stay':(p.cat==='custom'?'your find':(CATNAME[p.cat]||p.cat))}</span></div>
+        ${p.bl?`<div class="dt-bl">${p.bl}</div>`:'<div class="dt-bl" style="color:var(--ink-faint);font-style:italic">A place you added.</div>'}
         <a class="dt-gmaps" href="${gmaps(detailId)}" target="_blank" rel="noopener"><span class="gi">📍</span><span class="gt"><span class="g1">Open in Google Maps</span><span class="g2">Photos, reviews, hours & booking</span></span><span class="ga">↗</span></a>
       </div></div>
-    <div class="dt-foot">${primary}${secondary}</div>`;
+    <div class="dt-foot">${pick}</div>`;
 }
 
 /* ===================== MUTATIONS ===================== */
-function refresh(){save();if(document.getElementById('dayScreen').classList.contains('active'))renderDay();renderWeek();if(mapOpen())renderMap()}
-function addItem(id){if(!state.itin[activeDay].includes(id))state.itin[activeDay].push(id);save();renderDay();if(document.getElementById('sheet').classList.contains('open'))renderSheet();if(mapOpen())renderMap();toast(`Added to ${dObj(activeDay).date} <span class="tk">✓</span>`)}
-function removeById(id){const a=state.itin[activeDay],i=a.indexOf(id);if(i>=0)a.splice(i,1);save();renderDay();if(document.getElementById('sheet').classList.contains('open'))renderSheet();if(mapOpen())renderMap()}
-function moveItem(day,i,dir){const a=state.itin[day],n=i+dir;if(n<0||n>=a.length)return;[a[i],a[n]]=[a[n],a[i]];save();renderDay();if(mapOpen())renderMap()}
-function rmItem(day,i){state.itin[day].splice(i,1);save();renderDay();if(mapOpen())renderMap()}
-function clearDay(){state.itin[activeDay]=[];save();renderDay();if(mapOpen())renderMap()}
-function setStay(id){state.sleep[activeDay]=id;save();renderDay();renderWeek();if(document.getElementById('sheet').classList.contains('open'))closeSheet();if(mapOpen())renderMap();toast(`Staying at ${P[id].name} <span class="tk">✓</span>`)}
-function toggleFlex(v){state.flex=v;if(v!=='cappadocia'){const t=state.sleep.d6;if(t&&P[t]&&!isStayPlace(t))state.sleep.d6=''}save();renderWeek();if(document.getElementById('dayScreen').classList.contains('active'))renderDay();if(mapOpen())renderMap()}
+function repaintInline(){if(CTX.inline&&dayActive()){CTX.inline.map.invalidateSize(false);paint(CTX.inline,'day')}}
+function repaintOverlay(){if(CTX.overlay&&mapOpen())paint(CTX.overlay,mapView)}
+function afterChange(){save();renderWeek();if(dayActive())document.getElementById('dayContent').innerHTML=renderDayContentHTML(dObj(activeDay));repaintInline();if(detailOpen())renderDetail();repaintOverlay()}
+function addItem(id){if(!state.itin[activeDay].includes(id))state.itin[activeDay].push(id);afterChange();if(sheetOpen())renderSheet();toast(`Added to ${dObj(activeDay).date} <span class="tk">✓</span>`)}
+function addToActiveFromMap(id){if(!state.itin[activeDay].includes(id))state.itin[activeDay].push(id);afterChange();toast(`Added to ${dObj(activeDay).date} <span class="tk">✓</span>`)}
+function removeById(id){const a=state.itin[activeDay],i=a.indexOf(id);if(i>=0)a.splice(i,1);afterChange();if(sheetOpen())renderSheet()}
+function toggleItemDay(day,id){const a=state.itin[day],i=a.indexOf(id);if(i>=0)a.splice(i,1);else a.push(id);afterChange();toast(i>=0?`Removed from ${dShort(dObj(day))}`:`Added to ${dShort(dObj(day))} <span class="tk">✓</span>`)}
+function toggleStayDay(day,id){state.sleep[day]=state.sleep[day]===id?'':id;afterChange();toast(state.sleep[day]?`Staying ${dShort(dObj(day))} <span class="tk">✓</span>`:'Cleared that night')}
+function moveItem(day,i,dir){const a=state.itin[day],n=i+dir;if(n<0||n>=a.length)return;[a[i],a[n]]=[a[n],a[i]];afterChange()}
+function rmItem(day,i){state.itin[day].splice(i,1);afterChange()}
+function clearDay(){state.itin[activeDay]=[];afterChange()}
+function setStay(id){state.sleep[activeDay]=id;afterChange();if(sheetOpen())closeSheet();toast(`Staying at ${P[id].name} <span class="tk">✓</span>`)}
+function toggleFlex(v){state.flex=v;if(v!=='cappadocia'){const t=state.sleep.d6;if(t&&P[t]&&!isStayPlace(t))state.sleep.d6=''}afterChange()}
 function parseLatLng(u){if(!u)return null;let m=u.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/)||u.match(/[?&]q=(-?\d+\.\d+),(-?\d+\.\d+)/)||u.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/)||u.match(/(-?\d+\.\d+),\s*(-?\d+\.\d+)/);return m?[parseFloat(m[1]),parseFloat(m[2])]:null}
 function addOwn(asStay){
   const name=val('ownName');if(!name){toast('Give it a name first');return}
@@ -601,51 +668,52 @@ function addOwn(asStay){
   const id='cu'+(++customN);
   P[id]={name,em:selEmoji,cat:asStay?'hotel':'custom',views:[dObj(activeDay).region],r:'',pill:asStay?'Your pick':'Your find',bl:'',url:link||'',lat:ll?ll[0]:c[0]+(Math.random()-.5)*.05,lng:ll?ll[1]:c[1]+(Math.random()-.5)*.05};
   if(asStay)state.sleep[activeDay]=id;else state.itin[activeDay].push(id);
-  save();renderDay();closeSheet();if(mapOpen())renderMap();
+  afterChange();closeSheet();
   toast(`${selEmoji} ${name} ${asStay?'— where we sleep':'added'} <span class="tk">✓</span>`)
 }
 function applyPreset(key){const pr=CAPP_PRESETS[key];if(!pr)return;
   state.itin.d3=pr.d3.slice();state.itin.d4=pr.d4.slice();state.itin.d5=pr.d5.slice();
   if(state.flex==='cappadocia')state.itin.d6=pr.d6.slice();
   ['d2','d3','d4','d5'].forEach(dd=>state.sleep[dd]=pr.hotel);if(state.flex==='cappadocia')state.sleep.d6=pr.hotel;
-  save();renderWeek();if(mapOpen())renderMap();toast(`🎈 ${pr.name} added — staying at ${P[pr.hotel].name} <span class="tk">✓</span>`)}
-function presetHome(){state.flex='home';state.itin.d6=['hm_beypazari','hm_nallihan'];state.sleep.d6='hm_goynuk';state.itin.d7=['hm_tarakli'];save();renderWeek();if(mapOpen())renderMap();toast('🧭 Suggested way home added <span class="tk">✓</span>')}
-function clearAll(){if(!confirm('Clear everything and start fresh?'))return;DAYS.forEach(d=>{state.itin[d.id]=[];state.sleep[d.id]=''});state.flex='home';save();renderWeek();if(mapOpen())renderMap();toast('Cleared — a fresh start <span class="tk">✓</span>')}
+  afterChange();toast(`🎈 ${pr.name} added — staying at ${P[pr.hotel].name} <span class="tk">✓</span>`)}
+function presetHome(){state.flex='home';state.itin.d6=['hm_beypazari','hm_nallihan'];state.sleep.d6='hm_goynuk';state.itin.d7=['hm_tarakli'];afterChange();toast('🧭 Suggested way home added <span class="tk">✓</span>')}
+function clearAll(){if(!confirm('Clear everything and start fresh?'))return;DAYS.forEach(d=>{state.itin[d.id]=[];state.sleep[d.id]=''});state.flex='home';afterChange();toast('Cleared — a fresh start <span class="tk">✓</span>')}
 
 /* ===================== NAV ===================== */
 function showDay(id){activeDay=id;renderDay();document.getElementById('weekScreen').className='screen behind';document.getElementById('dayScreen').className='screen active'}
 function showWeek(){renderWeek();document.getElementById('dayScreen').className='screen ahead';document.getElementById('weekScreen').className='screen active'}
 
-/* ===================== MAP (Leaflet) ===================== */
+/* ===================== MAP (Leaflet · overlay + inline instances) ===================== */
 const MAP_TABS=[['day','📍 This day'],['trip','🗺 Whole trip'],['capp','Cappadocia'],['afyon','Afyon'],['road','The road'],['home','Way home']];
-function renderMapTabs(){document.getElementById('mapTabs').innerHTML=MAP_TABS.map(t=>`<button class="map-tab ${t[0]===mapView?'on':''}" onclick="setMapView('${t[0]}')">${t[1]}</button>`).join('')}
-function initMap(){if(mapReady)return;map=L.map('lmap',{zoomControl:true,attributionControl:true}).setView([38.9,33],6);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:19,attribution:'© OpenStreetMap, © CARTO'}).addTo(map);
-  markersLayer=L.layerGroup().addTo(map);lineLayer=L.layerGroup().addTo(map);mapReady=true}
-function placesForView(){
-  if(mapView==='day'){const d=dObj(activeDay);const ids=state.itin[activeDay].slice();const sl=state.sleep[activeDay];if(sl&&P[sl])ids.push(sl);
+const VOY_URL='https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+const VOY_OPT={subdomains:'abcd',maxZoom:19,attribution:'© OpenStreetMap, © CARTO'};
+function makeCtx(elId,interactive){const m=L.map(elId,{zoomControl:interactive,attributionControl:true,scrollWheelZoom:interactive}).setView([38.9,33],6);L.tileLayer(VOY_URL,VOY_OPT).addTo(m);return{map:m,markers:L.layerGroup().addTo(m),lines:L.layerGroup().addTo(m)}}
+function ensureCtx(key,elId,interactive){if(!CTX[key])CTX[key]=makeCtx(elId,interactive);return CTX[key]}
+function placesForView(view){
+  if(view==='day'){const d=dObj(activeDay);const ids=state.itin[activeDay].slice();const sl=state.sleep[activeDay];if(sl&&P[sl])ids.push(sl);
     if(ids.length)return ids;return Object.keys(P).filter(id=>(P[id].views||[]).includes(d.region))}
-  return Object.keys(P).filter(id=>(P[id].views||[]).includes(mapView))}
+  return Object.keys(P).filter(id=>(P[id].views||[]).includes(view))}
 function popupHTML(id){const p=P[id],d=dObj(activeDay);
-  const act=isStayPlace(id)?`<button class="pa-add stay" onclick="setStay('${id}');map.closePopup()">🛏 Stay · ${dShort(d)}</button>`:(p.cat==='route'?'':`<button class="pa-add" onclick="addToActiveFromMap('${id}');map.closePopup()">＋ ${dShort(d)}</button>`);
+  const act=isStayPlace(id)?`<button class="pa-add stay" onclick="openDetail('${id}',true)">🛏 Where to stay</button>`:(p.cat==='route'?'':`<button class="pa-add" onclick="addToActiveFromMap('${id}')">＋ Add to ${dShort(d)}</button>`);
   return `<div class="pop"><h4>${p.em} ${p.name}</h4><div class="pm">${p.meta||p.kind||''}</div>${p.bl?`<p>${p.bl}</p>`:''}<div class="pa"><a href="${gmaps(id)}" target="_blank" rel="noopener">↗ Maps</a>${act}</div></div>`}
-function addToActiveFromMap(id){if(!state.itin[activeDay].includes(id))state.itin[activeDay].push(id);save();renderWeek();renderMap();toast(`Added to ${dObj(activeDay).date} <span class="tk">✓</span>`)}
-function renderMap(){if(!mapReady)return;markersLayer.clearLayers();lineLayer.clearLayers();
-  const dayMode=mapView==='day',hasRoute=dayMode&&state.itin[activeDay].length>0,ids=placesForView();
-  const drawLine=(arr,opts)=>{const pts=arr.filter(id=>P[id]).map(id=>[P[id].lat,P[id].lng]);if(pts.length>1)L.polyline(pts,opts).addTo(lineLayer)};
-  if(mapView==='trip'){drawLine(OUT_LINE,{color:'#ff6b5a',weight:4});drawLine(RET_LINE,{color:'#f6a83f',weight:3,dashArray:'3 8'})}
-  else if(mapView==='road'){drawLine(ROAD_LINE,{color:'#ff6b5a',weight:4})}
-  else if(mapView==='home'){drawLine(RET_LINE,{color:'#f6a83f',weight:3,dashArray:'3 8'})}
+function paint(ctx,view){
+  ctx.markers.clearLayers();ctx.lines.clearLayers();
+  const dayMode=view==='day',hasRoute=dayMode&&state.itin[activeDay].length>0,ids=placesForView(view);
+  const drawLine=(arr,opts)=>{const pts=arr.filter(id=>P[id]).map(id=>[P[id].lat,P[id].lng]);if(pts.length>1)L.polyline(pts,opts).addTo(ctx.lines)};
+  if(view==='trip'){drawLine(OUT_LINE,{color:'#ff6b5a',weight:4});drawLine(RET_LINE,{color:'#f6a83f',weight:3,dashArray:'3 8'})}
+  else if(view==='road'){drawLine(ROAD_LINE,{color:'#ff6b5a',weight:4})}
+  else if(view==='home'){drawLine(RET_LINE,{color:'#f6a83f',weight:3,dashArray:'3 8'})}
   else if(hasRoute){drawLine(state.itin[activeDay],{color:'#ff6b5a',weight:3,dashArray:'6 6'})}
   ids.forEach((id,i)=>{const p=P[id];if(!p||p.lat==null)return;
     const m=L.circleMarker([p.lat,p.lng],{radius:p.cat==='route'?9:(isStayPlace(id)?8:7),color:'#fff',weight:2,fillColor:isStayPlace(id)?'#4a57c8':col(p.cat),fillOpacity:.96});
-    m.addTo(markersLayer);m.bindPopup(popupHTML(id),{maxWidth:262});
+    m.addTo(ctx.markers);m.bindPopup(popupHTML(id),{maxWidth:284,minWidth:196});
     if(hasRoute)m.bindTooltip(String(i+1),{permanent:true,direction:'center',className:'mnum'});else m.bindTooltip(`${p.em} ${p.name}`,{direction:'top',offset:[0,-4]})});
-  let fitIds=ids;const cappFrame=mapView==='capp'||(dayMode&&!hasRoute&&dObj(activeDay).region==='capp');
+  let fitIds=ids;const cappFrame=view==='capp'||(dayMode&&!hasRoute&&dObj(activeDay).region==='capp');
   if(cappFrame)fitIds=ids.filter(id=>id!=='cp6'&&id!=='cp12');
   const pts=fitIds.filter(id=>P[id]&&P[id].lat!=null).map(id=>[P[id].lat,P[id].lng]);
-  const doFit=()=>{map.invalidateSize(false);if(pts.length>1)map.fitBounds(L.latLngBounds(pts),{padding:[26,26],maxZoom:14,animate:false});else if(pts.length===1)map.setView(pts[0],13,{animate:false})};
-  doFit();setTimeout(doFit,180);renderMapInfo()}
+  const doFit=()=>{ctx.map.invalidateSize(false);if(pts.length>1)ctx.map.fitBounds(L.latLngBounds(pts),{padding:[24,24],maxZoom:14,animate:false});else if(pts.length===1)ctx.map.setView(pts[0],13,{animate:false})};
+  doFit();setTimeout(doFit,180);if(ctx===CTX.overlay)renderMapInfo()}
+function renderMapTabs(){document.getElementById('mapTabs').innerHTML=MAP_TABS.map(t=>`<button class="map-tab ${t[0]===mapView?'on':''}" onclick="setMapView('${t[0]}')">${t[1]}</button>`).join('')}
 function renderMapInfo(){const box=document.getElementById('mapInfo');
   if(mapView==='day'){const it=state.itin[activeDay].filter(id=>P[id]),sl=state.sleep[activeDay];
     if(!it.length&&!(sl&&P[sl])){box.innerHTML=`<div class="mi-empty">Add stops to this day to see them in order, with the driving distance. Tap any pin for details.</div>`;return}
@@ -653,8 +721,8 @@ function renderMapInfo(){const box=document.getElementById('mapInfo');
     if(sl&&P[sl])rows+=`<div class="mi-row"><span class="mi-num bed">🛏</span><span class="mi-nm">${P[sl].name}</span><a class="mi-go" href="${gmaps(sl)}" target="_blank" rel="noopener">Maps ↗</a></div>`;
     const km=dayKm(activeDay);box.innerHTML=rows+`<div class="mi-tot">${km?`≈ ${km} km driving · `:''}tap a pin, or any “Maps ↗”, to open the real place</div>`}
   else{box.innerHTML=`<div class="mi-legend"><span><i style="background:#ff6b5a"></i>Drive east</span><span><i style="background:#f6a83f"></i>The way home</span><span><i style="background:#4a57c8"></i>Where we sleep</span></div><div class="mi-tot" style="text-align:center">Tap any pin for details and a link to the real Google Maps place.</div>`}}
-function setMapView(v){mapView=v;renderMapTabs();document.getElementById('mapTitle').textContent=v==='day'?dObj(activeDay).date:({trip:'Our whole journey',capp:'Cappadocia',afyon:'Afyon & around',road:'The drive east',home:'The way home'})[v]||'Our map';renderMap()}
-function openMap(v){document.getElementById('mapOv').classList.add('open');initMap();mapView=v||'trip';renderMapTabs();setMapView(mapView);setTimeout(()=>{map.invalidateSize();renderMap()},130)}
+function setMapView(v){mapView=v;renderMapTabs();document.getElementById('mapTitle').textContent=v==='day'?dObj(activeDay).date:({trip:'Our whole journey',capp:'Cappadocia',afyon:'Afyon & around',road:'The drive east',home:'The way home'})[v]||'Our map';paint(CTX.overlay,v)}
+function openMap(v){document.getElementById('mapOv').classList.add('open');ensureCtx('overlay','lmap',true);mapView=v||'trip';renderMapTabs();setMapView(mapView);setTimeout(()=>{CTX.overlay.map.invalidateSize(false);paint(CTX.overlay,mapView)},150)}
 function closeMap(){document.getElementById('mapOv').classList.remove('open')}
 
 /* ===================== SHARE + PERSISTENCE ===================== */
